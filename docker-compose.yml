@@ -1,0 +1,25 @@
+version: '2'
+services:
+  sitea:
+    image: httpd
+    container_name: apache_site_a
+    volumes:
+      - /path/of/your/repository/sitea/index.html:/usr/local/apache2/htdocs/index.html
+    ports:
+      - "81:80"
+      
+  siteb:
+    image: httpd
+    container_name: apache_site_b
+    volumes:
+      - /path/of/your/repository/siteb/index.html:/usr/local/apache2/htdocs/index.html
+    ports:
+      - "82:80"
+      
+  nginx:
+    image: nginx
+    container_name: my_nginx
+    volumes:
+      - /path/of/your/repository/nginx/default.conf:/etc/nginx/conf.d/default.conf
+    ports:
+      - "80:80"
